@@ -18,7 +18,7 @@ public class SensorTest : MonoBehaviour
     {
         URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
         Debug.Log(URL);
-        InvokeRepeating("GetText", 0.0f, 60.0f);
+        InvokeRepeating("GetNewObservation", 0.0f, 60.0f);
     }
 
     public Observation GetCurrentObservation()
@@ -26,7 +26,12 @@ public class SensorTest : MonoBehaviour
         return CurrentObservation;
     }
 
-    private IEnumerator GetText()
+    private void GetNewObservation()
+    {
+        StartCoroutine(PollStation());
+    }
+
+    private IEnumerator PollStation()
     {
         UnityWebRequest request = UnityWebRequest.Get(URL);
         yield return request.SendWebRequest();
