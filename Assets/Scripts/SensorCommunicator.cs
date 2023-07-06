@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class SensorTest : MonoBehaviour
+public class SensorCommunicator : MonoBehaviour
 {
     public string StationID;
     // NOTE: PAT authentication is temprorary! This should
@@ -17,7 +17,6 @@ public class SensorTest : MonoBehaviour
     void Start()
     {
         URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
-        Debug.Log(URL);
         InvokeRepeating("GetNewObservation", 0.0f, 60.0f);
     }
 
