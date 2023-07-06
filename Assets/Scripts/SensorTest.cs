@@ -11,16 +11,17 @@ public class SensorTest : MonoBehaviour
     // in place.
     public string PersonalAccessToken;
     private string URL;
+    private Observation CurrentObservation;
 
     // Start is called before the first frame update
     void Start()
     {
         URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
         Debug.Log(URL);
-        StartCoroutine(GetText());
+        InvokeRepeating("GetText", 0.0f, 60.0f);
     }
 
-    IEnumerator GetText()
+    private IEnumerator GetText()
     {
         UnityWebRequest request = UnityWebRequest.Get(URL);
         yield return request.SendWebRequest();
@@ -28,21 +29,14 @@ public class SensorTest : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success) {
             Debug.Log(request.error);
         } else {
-            /* Debug.Log(request.downloadHandler.text); */
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
-            var currentObservation = currentData.obs[0];
+            CurrentObservation = currentData.obs[0];
             Debug.Log(currentData.station_name);
             foreach (var field in typeof(Observation).GetFields()) {
-                Debug.Log($"{field.Name}: {field.GetValue(currentObservation)}");
+                Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}");
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     [System.Serializable]
