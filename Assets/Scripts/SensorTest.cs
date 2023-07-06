@@ -21,6 +21,11 @@ public class SensorTest : MonoBehaviour
         InvokeRepeating("GetText", 0.0f, 60.0f);
     }
 
+    public Observation GetCurrentObservation()
+    {
+        return CurrentObservation;
+    }
+
     private IEnumerator GetText()
     {
         UnityWebRequest request = UnityWebRequest.Get(URL);
