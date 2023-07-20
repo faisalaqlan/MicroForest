@@ -402,11 +402,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 56e98c34c60c9f542906ff8de88a5c58,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e63f30e58d62eb740879fdfa1cbe806f, type: 2}
     - target: {fileID: 919132149155446097, guid: 56e98c34c60c9f542906ff8de88a5c58,
         type: 3}
       propertyPath: m_Name
       value: PinOakA (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446317025356153247, guid: 56e98c34c60c9f542906ff8de88a5c58,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d82ef5955c925c34ab57270c8bac652d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -548,11 +558,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 50768bcb8c37a3e4aa1e2b804b3fa3a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e63f30e58d62eb740879fdfa1cbe806f, type: 2}
     - target: {fileID: 919132149155446097, guid: 50768bcb8c37a3e4aa1e2b804b3fa3a6,
         type: 3}
       propertyPath: m_Name
       value: PinOakC
       objectReference: {fileID: 0}
+    - target: {fileID: 1446317025356153247, guid: 50768bcb8c37a3e4aa1e2b804b3fa3a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d82ef5955c925c34ab57270c8bac652d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -971,6 +991,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapleB
       objectReference: {fileID: 0}
+    - target: {fileID: 1446317025356153247, guid: e774adbad523d3d47aacf3f918eb2d7d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27a508698aea4794f9d471a3d43503fa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1886,6 +1911,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapleD
       objectReference: {fileID: 0}
+    - target: {fileID: 1446317025356153247, guid: 7aed308a9b5aabb4a9094e28f4a3a18b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27a508698aea4794f9d471a3d43503fa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2740,11 +2770,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e774adbad523d3d47aacf3f918eb2d7d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 183347218869418414, guid: 05e3aec94e70aa94d87a7def288a2a4b,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: e774adbad523d3d47aacf3f918eb2d7d,
         type: 3}
       propertyPath: m_Name
       value: MapleB (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446317025356153247, guid: e774adbad523d3d47aacf3f918eb2d7d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 183347218869418414, guid: 05e3aec94e70aa94d87a7def288a2a4b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3470,11 +3512,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 56e98c34c60c9f542906ff8de88a5c58,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e63f30e58d62eb740879fdfa1cbe806f, type: 2}
     - target: {fileID: 919132149155446097, guid: 56e98c34c60c9f542906ff8de88a5c58,
         type: 3}
       propertyPath: m_Name
       value: PinOakA
       objectReference: {fileID: 0}
+    - target: {fileID: 1446317025356153247, guid: 56e98c34c60c9f542906ff8de88a5c58,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d82ef5955c925c34ab57270c8bac652d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
