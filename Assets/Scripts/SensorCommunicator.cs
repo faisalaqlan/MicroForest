@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using TMPro;
 
 public class SensorCommunicator : MonoBehaviour
 {
     public string StationID;
-    // NOTE: PAT authentication is temprorary! This should
+    // NOTE(raymond): PAT authentication is temprorary! This should
     // be updated to OAuth when we have the basic functionality
     // in place.
     public string PersonalAccessToken;
     private string URL;
     private Observation CurrentObservation;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private TMP_Text SensorData;
+
     void Start()
     {
         URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
@@ -35,17 +38,22 @@ public class SensorCommunicator : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get(URL);
         yield return request.SendWebRequest();
 
+        string newText = "";
+
         if (request.result != UnityWebRequest.Result.Success) {
             Debug.Log(request.error);
+            newText += "Error: Could not access sensor data endpoint.";
         } else {
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
             CurrentObservation = currentData.obs[0];
-            Debug.Log(currentData.station_name);
-            foreach (var field in typeof(Observation).GetFields()) {
-                Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}");
-            }
+            newText += $"Station: {currentData.station_name}\n";
+            newText += $"Time Stamp: {CurrentObservation.timestamp}\n";
+            newText += $"Temperature: {CurrentObservation.air_temperature} °C\n";
+            newText += $"UV: {CurrentObservation.uv}\n";
+            newText += $"Wind Direction: {CurrentObservation.wind_direction} °N\n";
         }
+        SensorData.SetText(newText);
     }
     
     [System.Serializable]
