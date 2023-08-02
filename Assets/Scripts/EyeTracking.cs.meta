@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2073b702373093048882354068bd981a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - EyeCenterPosition: {fileID: 1103805862887876298, guid: 1795ff9d35b012c469823b6c74309fcd,
+      type: 3}
+  - EyeGazePose: {fileID: -90774493710231722, guid: 1795ff9d35b012c469823b6c74309fcd,
+      type: 3}
+  - EyeAsset: {fileID: -944628639613478452, guid: 1795ff9d35b012c469823b6c74309fcd,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
