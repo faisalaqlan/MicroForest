@@ -2,27 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using TMPro;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class SensorCommunicator : MonoBehaviour
 {
-    public string StationID;
-    // NOTE(raymond): PAT authentication is temprorary! This should
+    public string StationID1, StationID2, StationID3, StationID4, StationID5, StationID6;
+    // NOTE: PAT authentication is temprorary! This should
     // be updated to OAuth when we have the basic functionality
     // in place.
-    public string PersonalAccessToken;
+    public string PersonalAccessToken1, PersonalAccessToken2, PersonalAccessToken3, PersonalAccessToken4, PersonalAccessToken5, PersonalAccessToken6;
     private string URL;
     private Observation CurrentObservation;
+    private int count = 0;
+    private string StationID;
+    private string PersonalAccessToken;
+    public Text textElement;
+    private List<Station> stations = new List<Station>();
 
-    [SerializeField]
-    private TMP_Text SensorData;
-
+    // Start is called before the first frame update
     void Start()
     {
-        URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
-        InvokeRepeating("GetNewObservation", 0.0f, 60.0f);
+        //Taking inputed ID's and PAT's and storing them in a list
+        stations.Add(new Station() {id = StationID1, pat = PersonalAccessToken1});
+        stations.Add(new Station() {id = StationID2, pat = PersonalAccessToken2});
+        stations.Add(new Station() {id = StationID3, pat = PersonalAccessToken3});
+        stations.Add(new Station() {id = StationID4, pat = PersonalAccessToken4});
+        stations.Add(new Station() {id = StationID5, pat = PersonalAccessToken5});
+        stations.Add(new Station() {id = StationID6, pat = PersonalAccessToken6});
+        //Setting the first station's ID and PAT
+        StationID = stations[0].id;
+        PersonalAccessToken = stations[0].pat;
+
+
+        InvokeRepeating("changeUI", 0.0f, 0.5f);
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        /*
+        if(Input.GetButton("space"))
+        {
+            changeUI();
+        }
+        */
+           
+    }
+
+    //changes UI once per action function called
+    void changeUI()
+    {
+        if(Input.GetButton("space"))
+        {
+            if(count>=stations.Count)
+            {
+                textElement.text = "";
+                count = 0;
+            }
+            else
+            {
+                textElement.text = "";
+                StationID = stations[count].id;
+                PersonalAccessToken = stations[count].pat;
+                URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
+                GetNewObservation();
+                count++;
+            }
+        }
+    }
+
+    public struct Station
+    {
+        //Station ID
+        public string id;
+        //Personal Access Token
+        public string pat;
+    }
     public Observation GetCurrentObservation()
     {
         return CurrentObservation;
@@ -38,22 +94,26 @@ public class SensorCommunicator : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get(URL);
         yield return request.SendWebRequest();
 
-        string newText = "";
-
-        if (request.result != UnityWebRequest.Result.Success) {
+        if (request.result != UnityWebRequest.Result.Success) 
+        {
             Debug.Log(request.error);
-            newText += "Error: Could not access sensor data endpoint.";
-        } else {
+        } 
+        else 
+        {
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
             CurrentObservation = currentData.obs[0];
-            newText += $"Station: {currentData.station_name}\n";
-            newText += $"Time Stamp: {CurrentObservation.timestamp}\n";
-            newText += $"Temperature: {CurrentObservation.air_temperature} °C\n";
-            newText += $"UV: {CurrentObservation.uv}\n";
-            newText += $"Wind Direction: {CurrentObservation.wind_direction} °N\n";
+            Debug.Log(currentData.station_name);
+            textElement.text += $"Station: {currentData.station_name}\n";   
+            textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
+            textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n";
+            textElement.text += $"UV: {CurrentObservation.uv}\n";
+            textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
+            foreach (var field in typeof(Observation).GetFields()) 
+            {
+                Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}");
+            }
         }
-        SensorData.SetText(newText);
     }
     
     [System.Serializable]
