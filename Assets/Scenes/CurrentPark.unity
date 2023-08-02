@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8700,6 +8700,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 510589853}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &517326256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517326258}
+  - component: {fileID: 517326257}
+  m_Layer: 0
+  m_Name: Sensors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &517326257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517326256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad27cb563a84b5c2eb9af00adf85dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textElement: {fileID: 0}
+  Stations:
+  - id: 107001
+    pat: b4bee5e1-7f75-42d0-8aeb-cadec1e97348
+  - id: 106997
+    pat: 4ca0bbf1-81cb-4730-b47b-43e15e456cba
+  - id: 107000
+    pat: 8f6bb092-7f51-4662-a609-bbd8ebd47c12
+  - id: 107214
+    pat: 1a283e87-253f-4f33-bb9e-ddb4a9138cc7
+  - id: 107216
+    pat: 9f134aa7-78ba-48f5-be82-9a50f4fce928
+  - id: 107218
+    pat: e0e72a7a-5d2a-417e-b08a-b8c6769344af
+--- !u!4 &517326258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517326256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.16931, y: 1.0776246, z: 10.928915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &521841869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24016,21 +24074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad27cb563a84b5c2eb9af00adf85dd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StationID1: 107001
-  StationID2: 106997
-  StationID3: 107000
-  StationID4: 107214
-  StationID5: 107216
-  StationID6: 107218
-  PersonalAccessToken1: b4bee5e1-7f75-42d0-8aeb-cadec1e97348
-  PersonalAccessToken2: 4ca0bbf1-81cb-4730-b47b-43e15e456cba
-  PersonalAccessToken3: 8f6bb092-7f51-4662-a609-bbd8ebd47c12
-  PersonalAccessToken4: 1a283e87-253f-4f33-bb9e-ddb4a9138cc7
-  PersonalAccessToken5: 9f134aa7-78ba-48f5-be82-9a50f4fce928
-  PersonalAccessToken6: e0e72a7a-5d2a-417e-b08a-b8c6769344af
   textElement: {fileID: 1013600233}
-  TouchPadButton: {fileID: 0}
-  ActionAsset: {fileID: 0}
+  Stations: []
 --- !u!1001 &1377686078
 PrefabInstance:
   m_ObjectHideFlags: 0

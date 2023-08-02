@@ -5,92 +5,72 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
+
 public class SensorCommunicator : MonoBehaviour
 {
-    public string StationID1, StationID2, StationID3, StationID4, StationID5, StationID6;
-    // NOTE: PAT authentication is temprorary! This should
-    // be updated to OAuth when we have the basic functionality
-    // in place.
-    public string PersonalAccessToken1, PersonalAccessToken2, PersonalAccessToken3, PersonalAccessToken4, PersonalAccessToken5, PersonalAccessToken6;
-    private string URL;
     private Observation CurrentObservation;
-    private int count = 0;
-    private string StationID;
-    private string PersonalAccessToken;
-    public Text textElement;
-    private List<Station> stations = new List<Station>();
+    private int CurrentStationIndex = 0;
+    private Station CurrentStation;
+
+    // TODO(raymond): Either add and orient a TextElement in the scene,
+    // or go back to using TextMesh Pro.
+    /* public Text textElement; */
+
+    [System.Serializable]
+    struct Station
+    {
+        public string id;
+        // NOTE(raymond): PAT authentication is temprorary! This should
+        // be updated to OAuth when we have the basic functionality
+        // in place.
+        public string pat;
+    }
+
+    [SerializeField]
+    List<Station> Stations = new List<Station>();
 
     // Start is called before the first frame update
     void Start()
     {
-        //Taking inputed ID's and PAT's and storing them in a list
-        stations.Add(new Station() {id = StationID1, pat = PersonalAccessToken1});
-        stations.Add(new Station() {id = StationID2, pat = PersonalAccessToken2});
-        stations.Add(new Station() {id = StationID3, pat = PersonalAccessToken3});
-        stations.Add(new Station() {id = StationID4, pat = PersonalAccessToken4});
-        stations.Add(new Station() {id = StationID5, pat = PersonalAccessToken5});
-        stations.Add(new Station() {id = StationID6, pat = PersonalAccessToken6});
-        //Setting the first station's ID and PAT
-        StationID = stations[0].id;
-        PersonalAccessToken = stations[0].pat;
-
-
-        InvokeRepeating("changeUI", 0.0f, 0.5f);
+        CurrentStation = Stations[0];
+        InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(Input.GetButton("space"))
+        // TODO(raymond): Bind input to XRI controller inputs.
+        // NOTE(raymond): We should consider moving to the modern input system,
+        // as the Input module is legacy functionality.
+        if(Input.GetButtonDown("Jump"))
         {
-            changeUI();
-        }
-        */
-           
-    }
-
-    //changes UI once per action function called
-    void changeUI()
-    {
-        if(Input.GetButton("space"))
-        {
-            if(count>=stations.Count)
-            {
-                textElement.text = "";
-                count = 0;
-            }
-            else
-            {
-                textElement.text = "";
-                StationID = stations[count].id;
-                PersonalAccessToken = stations[count].pat;
-                URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{StationID}?token={PersonalAccessToken}";
-                GetNewObservation();
-                count++;
-            }
+            CurrentStationIndex = (CurrentStationIndex + 1) % Stations.Count;
+            CurrentStation = Stations[CurrentStationIndex];
+            CancelInvoke("RequestNewObservation");
+            InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
         }
     }
 
-    public struct Station
+    // NOTE(raymond): We need to wrap the coroutine in order to InvokeRepeating.
+    private void RequestNewObservation()
     {
-        //Station ID
-        public string id;
-        //Personal Access Token
-        public string pat;
+        StartCoroutine(PollStation());
     }
+
     public Observation GetCurrentObservation()
     {
         return CurrentObservation;
     }
 
-    private void GetNewObservation()
-    {
-        StartCoroutine(PollStation());
-    }
-
+    // NOTE(raymond): This might not need to be a coroutine, but given
+    // that the speed of an HTTP request depends on connection quality,
+    // it's a good idea to use one here (and it's also what the docs
+    // recommend).
     private IEnumerator PollStation()
     {
+        // NOTE(raymond): There is no need to make the URL as class member.
+        // It is only ever used in this function.
+        string URL = $"https://swd.weatherflow.com/swd/rest/observations/station/{CurrentStation.id}?token={CurrentStation.pat}";
         UnityWebRequest request = UnityWebRequest.Get(URL);
         yield return request.SendWebRequest();
 
@@ -100,19 +80,25 @@ public class SensorCommunicator : MonoBehaviour
         } 
         else 
         {
+            string text = "";
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
             CurrentObservation = currentData.obs[0];
-            Debug.Log(currentData.station_name);
-            textElement.text += $"Station: {currentData.station_name}\n";   
-            textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
-            textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n";
-            textElement.text += $"UV: {CurrentObservation.uv}\n";
-            textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
-            foreach (var field in typeof(Observation).GetFields()) 
-            {
-                Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}");
-            }
+            /* textElement.text += $"Station: {currentData.station_name}\n";    */
+            /* textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n"; */
+            /* textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n"; */
+            /* textElement.text += $"UV: {CurrentObservation.uv}\n"; */
+            /* textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n"; */
+            text += $"Station: {currentData.station_name}\n";   
+            text += $"Time Stamp: {CurrentObservation.timestamp}\n";
+            text += $"Temperature: {CurrentObservation.air_temperature}\n";
+            text += $"UV: {CurrentObservation.uv}\n";
+            text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
+            Debug.Log(text);
+            /* foreach (var field in typeof(Observation).GetFields())  */
+            /* { */
+            /*     Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}"); */
+            /* } */
         }
     }
     
