@@ -8729,6 +8729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad27cb563a84b5c2eb9af00adf85dd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsToggled: 0
   textElement: {fileID: 1013600233}
   Stations:
   - id: 107001
