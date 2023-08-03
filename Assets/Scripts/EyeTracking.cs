@@ -6,23 +6,20 @@ using UnityEngine.InputSystem.XR;
 
 public class EyeTracking : MonoBehaviour
 {
-    [SerializeField] private InputActionReference EyeCenterPosition;
-    [SerializeField] private InputActionReference EyeGazePose;
-    [SerializeField] private InputActionAsset EyeAsset;
+    XRIDefaultInputActions Actions;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (EyeAsset != null)
-        {
-            EyeAsset.Enable();
-        }
+        Actions = new XRIDefaultInputActions();
+        Actions.XRIHead.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var centerPosition = EyeCenterPosition.action.ReadValue<Vector3>();
-        Debug.Log(centerPosition);
-        var gazePose = EyeGazePose.action.ReadValue<PoseState>();
+        /* Debug.Log($"EyePosition: {Actions.XRIHead.EyeGazePosition.ReadValue<Vector3>()}"); */
+        /* var centerPosition = EyeCenterPosition.action.ReadValue<Vector3>(); */
+        /* var gazePose = EyeGazePose.action.ReadValue<PoseState>(); */
     }
 }
