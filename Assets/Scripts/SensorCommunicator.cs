@@ -11,10 +11,13 @@ public class SensorCommunicator : MonoBehaviour
     private Observation CurrentObservation;
     private int CurrentStationIndex = 0;
     private Station CurrentStation;
+    public bool IsToggled;
+
+    XRIDefaultInputActions Actions;
 
     // TODO(raymond): Either add and orient a TextElement in the scene,
     // or go back to using TextMesh Pro.
-    /* public Text textElement; */
+    public Text textElement;
 
     [System.Serializable]
     struct Station
@@ -29,6 +32,17 @@ public class SensorCommunicator : MonoBehaviour
     [SerializeField]
     List<Station> Stations = new List<Station>();
 
+    void Awake()
+    {
+        Actions = new XRIDefaultInputActions();
+        Actions.XRILeftHandInteraction.Enable();
+        Actions.XRIRightHandInteraction.Enable();
+        Actions.XRILeftHandInteraction.UIPress.performed += OnTriggerPress;
+        Actions.XRILeftHandInteraction.Toggle.performed += OnTrackpadPress;
+        Actions.XRIRightHandInteraction.UIPress.performed += OnTriggerPress;
+        Actions.XRIRightHandInteraction.Toggle.performed += OnTrackpadPress;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +56,7 @@ public class SensorCommunicator : MonoBehaviour
         // TODO(raymond): Bind input to XRI controller inputs.
         // NOTE(raymond): We should consider moving to the modern input system,
         // as the Input module is legacy functionality.
-        if(Input.GetButtonDown("Jump"))
-        {
-            CurrentStationIndex = (CurrentStationIndex + 1) % Stations.Count;
-            CurrentStation = Stations[CurrentStationIndex];
-            CancelInvoke("RequestNewObservation");
-            InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
-        }
+        textElement.enabled = IsToggled;
     }
 
     // NOTE(raymond): We need to wrap the coroutine in order to InvokeRepeating.
@@ -65,7 +73,7 @@ public class SensorCommunicator : MonoBehaviour
     // NOTE(raymond): This might not need to be a coroutine, but given
     // that the speed of an HTTP request depends on connection quality,
     // it's a good idea to use one here (and it's also what the docs
-    // recommend).
+    // recommends).
     private IEnumerator PollStation()
     {
         // NOTE(raymond): There is no need to make the URL as class member.
@@ -80,26 +88,39 @@ public class SensorCommunicator : MonoBehaviour
         } 
         else 
         {
-            string text = "";
+            /* string text = ""; */
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
             CurrentObservation = currentData.obs[0];
-            /* textElement.text += $"Station: {currentData.station_name}\n";    */
-            /* textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n"; */
-            /* textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n"; */
-            /* textElement.text += $"UV: {CurrentObservation.uv}\n"; */
-            /* textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n"; */
-            text += $"Station: {currentData.station_name}\n";   
-            text += $"Time Stamp: {CurrentObservation.timestamp}\n";
-            text += $"Temperature: {CurrentObservation.air_temperature}\n";
-            text += $"UV: {CurrentObservation.uv}\n";
-            text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
-            Debug.Log(text);
+            textElement.text = "";
+            textElement.text += $"Station: {currentData.station_name}\n";   
+            textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
+            textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n";
+            textElement.text += $"UV: {CurrentObservation.uv}\n";
+            textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
+            /* text += $"Station: {currentData.station_name}\n";    */
+            /* text += $"Time Stamp: {CurrentObservation.timestamp}\n"; */
+            /* text += $"Temperature: {CurrentObservation.air_temperature}\n"; */
+            /* text += $"UV: {CurrentObservation.uv}\n"; */
+            /* text += $"Wind Direction: {CurrentObservation.wind_direction}\n"; */
             /* foreach (var field in typeof(Observation).GetFields())  */
             /* { */
             /*     Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}"); */
             /* } */
         }
+    }
+
+    private void OnTriggerPress(InputAction.CallbackContext context)
+    {
+            CurrentStationIndex = (CurrentStationIndex + 1) % Stations.Count;
+            CurrentStation = Stations[CurrentStationIndex];
+            CancelInvoke("RequestNewObservation");
+            InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
+    }
+    
+    private void OnTrackpadPress(InputAction.CallbackContext context)
+    {
+        IsToggled = !IsToggled;
     }
     
     [System.Serializable]
