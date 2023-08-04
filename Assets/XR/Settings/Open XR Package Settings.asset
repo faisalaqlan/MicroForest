@@ -22,6 +22,26 @@ MonoBehaviour:
   required: 0
   m_expressionHandle: 0
   m_expressionHandle_Lip: 0
+--- !u!114 &-8551573286993615717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d008d94966c2e9e4c868ca2c0d777357, type: 3}
+  m_Name: HtcViveCosmosInputFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: HTC Vive Cosmos Controller Support
+  version: 0.0.2
+  featureIdInternal: com.htc.openxr.feature.input.htcvivecosmos
+  openxrExtensionStrings: XR_HTC_vive_cosmos_controller_interaction XR_EXT_palm_pose
+  company: HTC
+  priority: 0
+  required: 0
 --- !u!114 &-8140494046666112130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +138,12 @@ MonoBehaviour:
   - {fileID: 4893829345954421791}
   - {fileID: -1589171361186619839}
   - {fileID: -5284097464071767657}
+  - {fileID: 4891745098209028395}
   - {fileID: 3661895845911760453}
   - {fileID: 2497339995422133549}
+  - {fileID: -8551573286993615717}
+  - {fileID: 3422699119984941674}
+  - {fileID: 3533982308928292956}
   - {fileID: -5941725581135416239}
   - {fileID: -4303234679750134859}
   - {fileID: 1507748248788215057}
@@ -128,7 +152,9 @@ MonoBehaviour:
   - {fileID: 154189092879288027}
   - {fileID: 6977855822492783501}
   - {fileID: 2316775424616146661}
+  - {fileID: -3607096619951680599}
   - {fileID: -5611916350011621528}
+  - {fileID: -4957165918564107252}
   m_renderMode: 1
   m_depthSubmissionMode: 0
 --- !u!114 &-6749223995342406802
@@ -302,6 +328,28 @@ MonoBehaviour:
   m_space: 0
   m_leftHandle: 0
   m_rightHandle: 0
+--- !u!114 &-4957165918564107252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5cb237345f49840bbc00c128fde3d9, type: 3}
+  m_Name: VIVE_FacialTracking_OpenXR_API Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Facial Tracking
+  version: 0.0.1
+  featureIdInternal: com.htc.openxr.facialtracking.feature
+  openxrExtensionStrings: XR_HTC_facial_tracking
+  company: HTC
+  priority: 0
+  required: 0
+  m_expressionHandle: 0
+  m_expressionHandle_Lip: 0
 --- !u!114 &-4303234679750134859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +392,29 @@ MonoBehaviour:
   required: 0
   m_expressionHandle: 0
   m_expressionHandle_Lip: 0
+--- !u!114 &-3607096619951680599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f11d54adfd486544afef5e8b85f159d, type: 3}
+  m_Name: SceneUnderstanding_OpenXR_API Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Scene Understanding
+  version: 0.0.1
+  featureIdInternal: com.htc.openxr.sceneunderstanding.feature
+  openxrExtensionStrings: XR_MSFT_scene_understanding
+  company: HTC
+  priority: 0
+  required: 0
+  m_XrInstance: 0
+  m_XrSession: 0
+  m_systemid: 0
 --- !u!114 &-3163298906311284286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +649,46 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &3422699119984941674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f67eb290fa9f3468b94c84f9f50e84, type: 3}
+  m_Name: HtcViveFocus3InputFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: HTC Vive Focus3 Controller Support
+  version: 0.0.2
+  featureIdInternal: com.htc.openxr.feature.input.htcvivefocus3
+  openxrExtensionStrings: XR_HTC_vive_focus3_controller_interaction XR_EXT_palm_pose
+  company: HTC
+  priority: 0
+  required: 0
+--- !u!114 &3533982308928292956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ba0632411b7742b59d20955e2ea57, type: 3}
+  m_Name: HtcViveHandInteractionInputFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: HTC Vive hand interaction Support
+  version: 0.0.1
+  featureIdInternal: com.htc.openxr.feature.input.htcvivehandinteraction
+  openxrExtensionStrings: XR_HTC_hand_interaction
+  company: HTC
+  priority: 0
+  required: 0
 --- !u!114 &3661895845911760453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,6 +770,29 @@ MonoBehaviour:
   company: 
   priority: 0
   required: 0
+--- !u!114 &4891745098209028395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38169f0e301608a469f311ebb2233162, type: 3}
+  m_Name: HandTracking_OpenXR_API Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Hand Tracking
+  version: 0.0.1
+  featureIdInternal: com.company.openxr.handtracking.feature
+  openxrExtensionStrings: XR_EXT_hand_tracking
+  company: HTC
+  priority: 0
+  required: 0
+  m_space: 0
+  m_leftHandle: 0
+  m_rightHandle: 0
 --- !u!114 &4893829345954421791
 MonoBehaviour:
   m_ObjectHideFlags: 0

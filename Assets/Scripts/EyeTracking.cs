@@ -18,6 +18,7 @@ public class EyeTracking : MonoBehaviour
     }
 
     // Update is called once per frame
+    // TODO(raymond): dump eye tracking data to file.
     void Update()
     {
         int trackingStateValue = Actions.XRIHead.EyeGazeTrackingState.ReadValue<int>();

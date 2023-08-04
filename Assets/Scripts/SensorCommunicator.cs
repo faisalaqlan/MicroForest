@@ -112,10 +112,13 @@ public class SensorCommunicator : MonoBehaviour
 
     private void OnTriggerPress(InputAction.CallbackContext context)
     {
+        if (IsToggled)
+        {
             CurrentStationIndex = (CurrentStationIndex + 1) % Stations.Count;
             CurrentStation = Stations[CurrentStationIndex];
             CancelInvoke("RequestNewObservation");
             InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
+        }
     }
     
     private void OnTrackpadPress(InputAction.CallbackContext context)
