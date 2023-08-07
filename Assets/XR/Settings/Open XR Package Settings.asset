@@ -34,7 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d008d94966c2e9e4c868ca2c0d777357, type: 3}
   m_Name: HtcViveCosmosInputFeature Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 1
+  m_enabled: 0
   nameUi: HTC Vive Cosmos Controller Support
   version: 0.0.2
   featureIdInternal: com.htc.openxr.feature.input.htcvivecosmos
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f11d54adfd486544afef5e8b85f159d, type: 3}
   m_Name: SceneUnderstanding_OpenXR_API Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 1
+  m_enabled: 0
   nameUi: Scene Understanding
   version: 0.0.1
   featureIdInternal: com.htc.openxr.sceneunderstanding.feature
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
   m_Name: RuntimeDebuggerOpenXRFeature Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 1
+  m_enabled: 0
   nameUi: Runtime Debugger
   version: 1
   featureIdInternal: com.unity.openxr.features.runtimedebugger
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f67eb290fa9f3468b94c84f9f50e84, type: 3}
   m_Name: HtcViveFocus3InputFeature Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 1
+  m_enabled: 0
   nameUi: HTC Vive Focus3 Controller Support
   version: 0.0.2
   featureIdInternal: com.htc.openxr.feature.input.htcvivefocus3
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6ba0632411b7742b59d20955e2ea57, type: 3}
   m_Name: HtcViveHandInteractionInputFeature Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 1
+  m_enabled: 0
   nameUi: HTC Vive hand interaction Support
   version: 0.0.1
   featureIdInternal: com.htc.openxr.feature.input.htcvivehandinteraction
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38169f0e301608a469f311ebb2233162, type: 3}
   m_Name: HandTracking_OpenXR_API Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 1
+  m_enabled: 0
   nameUi: Hand Tracking
   version: 0.0.1
   featureIdInternal: com.company.openxr.handtracking.feature
