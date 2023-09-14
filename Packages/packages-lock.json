@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.htc.upm.vive.openxr": {
-      "version": "file:C:/Users/k0bast01/Documents/GitHub/MicroForest/Packages/com.htc.upm.vive.openxr-2.0.0.tgz",
+      "version": "file:C:/Users/rllawr04/Downloads/com.htc.upm.vive.openxr-1.0.13.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
