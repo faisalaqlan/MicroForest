@@ -1,6 +1,12 @@
 {
   "dependencies": {
-    "com.htc.upm.vive.openxr": "file:C:/Users/rllawr04/Downloads/com.htc.upm.vive.openxr-1.0.13.tgz",
+    "com.htc.upm.vive.openxr": "file:C:/Users/k0bast01/Documents/GitHub/MicroForest/Packages/com.htc.upm.vive.openxr-2.0.0.tgz", 
+    /*
+    Download package from here: 
+    https://developer.vive.com/resources/openxr/openxr-pcvr-legacy/tutorials/unity/installing-vive-openxr-pc-vr-plugin-npm/
+    Download another package from here: https://github.com/ViveSoftware/VIVE-OpenXR/releases
+    change username from k0bast01 to your userID
+    */
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.development": "1.0.1",
     "com.unity.feature.vr": "1.0.0",

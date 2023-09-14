@@ -92,7 +92,7 @@ public class SensorCommunicator : MonoBehaviour
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
             CurrentObservation = currentData.obs[0];
-            textElement.text = "";
+            textElement.text = "Current Data\n";
             textElement.text += $"Station: {currentData.station_name}\n";   
             textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
             textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n";
