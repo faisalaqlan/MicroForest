@@ -1,0 +1,8 @@
+/* 
+    download package from here : https://github.com/ViveSoftware/VIVE-OpenXR/releases
+    download ViveOpenXRInstaller
+change to this on manifest.js and package.js file to:
+	set the location of the downloaded file and add "file:C:/Users/uofl-chse/Desktop/Khem/package/com.htc.upm.vive.openxr-2.0.0.tgz" 
+	to packages>manifest.js and Packages>packages-lock.js
+    Change username from K0bast01 to your ID
+    */
