@@ -94,19 +94,20 @@ public class SensorCommunicator : MonoBehaviour
             CurrentObservation = currentData.obs[0];
             textElement.text = "";
             textElement.text += $"Station: {currentData.station_name}\n";   
-            textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
+            //textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
             textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n";
-            textElement.text += $"UV: {CurrentObservation.uv}\n";
-            textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
+            //textElement.text += $"UV: {CurrentObservation.uv}\n";
+            //textElement.text += $"Wind Direction: {CurrentObservation.wind_direction}\n";
             /* text += $"Station: {currentData.station_name}\n";    */
             /* text += $"Time Stamp: {CurrentObservation.timestamp}\n"; */
             /* text += $"Temperature: {CurrentObservation.air_temperature}\n"; */
             /* text += $"UV: {CurrentObservation.uv}\n"; */
             /* text += $"Wind Direction: {CurrentObservation.wind_direction}\n"; */
-            /* foreach (var field in typeof(Observation).GetFields())  */
-            /* { */
-            /*     Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation)}"); */
-            /* } */
+            /* foreach (var field in typeof(Observation).GetFields())
+             {
+                 Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation.air_temperature)}"); 
+              } */
+            Debug.Log($"Station: {currentData.station_name},Temperature: {CurrentObservation.air_temperature}\n");
         }
     }
 

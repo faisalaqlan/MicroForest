@@ -22,8 +22,8 @@ public class EyeTracking : MonoBehaviour
     void Update()
     {
         int trackingStateValue = Actions.XRIHead.EyeGazeTrackingState.ReadValue<int>();
-        Debug.Log($"EyeGazeTrackingState: {trackingStateValue}");
+       /* Debug.Log($"EyeGazeTrackingState: {trackingStateValue}");
         Debug.Log($"EyePosition: {Actions.XRIHead.EyeGazePosition.ReadValue<Vector3>()}");
-        Debug.Log($"EyeRotation: {Actions.XRIHead.EyeGazeRotation.ReadValue<Quaternion>()}");
+        Debug.Log($"EyeRotation: {Actions.XRIHead.EyeGazeRotation.ReadValue<Quaternion>()}");*/
     }
 }
