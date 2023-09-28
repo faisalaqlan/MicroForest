@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class LiveGraph : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class LiveGraph : MonoBehaviour
         if (sensorCommunicator != null)
         {
             float airTemperature = sensorCommunicator.CurrentObservation.air_temperature;
-            //string stationName = sensorCommunicator.CurrentStation.id; // Use the station ID as the label.
+            //string stationName = sensorCommunicator.CurrentData.id; // Use the station ID as the label.
 
             // Create or update a dot based on the data.
             Transform dot = Instantiate(dotPrefab, graphParent);
@@ -23,4 +23,3 @@ public class LiveGraph : MonoBehaviour
         }
     }
 }
-*/
