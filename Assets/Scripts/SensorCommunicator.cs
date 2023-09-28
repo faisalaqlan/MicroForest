@@ -10,7 +10,7 @@ public class SensorCommunicator : MonoBehaviour
 {
     public Observation CurrentObservation;
     private int CurrentStationIndex = 0;
-    private Station CurrentStation;
+    private Station CurrentStation { get; set; }
     public bool IsToggled;
 
     XRIDefaultInputActions Actions;
@@ -69,6 +69,11 @@ public class SensorCommunicator : MonoBehaviour
     {
         return CurrentObservation;
     }
+    /* public Station GetCurrentStation()
+     {
+         return CurrentStation;
+     }*/
+
 
     // NOTE(raymond): This might not need to be a coroutine, but given
     // that the speed of an HTTP request depends on connection quality,
@@ -82,18 +87,18 @@ public class SensorCommunicator : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get(URL);
         yield return request.SendWebRequest();
 
-        if (request.result != UnityWebRequest.Result.Success) 
+        if (request.result != UnityWebRequest.Result.Success)
         {
             Debug.Log(request.error);
-        } 
-        else 
+        }
+        else
         {
             /* string text = ""; */
             string jsonData = request.downloadHandler.text;
             StationData currentData = JsonUtility.FromJson<StationData>(jsonData);
             CurrentObservation = currentData.obs[0];
             textElement.text = "";
-            textElement.text += $"Station: {currentData.station_name}\n";   
+            textElement.text += $"Station: {currentData.station_name}\n";
             //textElement.text += $"Time Stamp: {CurrentObservation.timestamp}\n";
             textElement.text += $"Temperature: {CurrentObservation.air_temperature}\n";
             //textElement.text += $"UV: {CurrentObservation.uv}\n";
@@ -121,12 +126,12 @@ public class SensorCommunicator : MonoBehaviour
             InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
         }
     }
-    
+
     private void OnTrackpadPress(InputAction.CallbackContext context)
     {
         IsToggled = !IsToggled;
     }
-    
+
     [System.Serializable]
     private class StationData
     {
