@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class SensorCommunicator : MonoBehaviour
 {
-    private Observation CurrentObservation;
+    public Observation CurrentObservation;
     private int CurrentStationIndex = 0;
     private Station CurrentStation;
     public bool IsToggled;
