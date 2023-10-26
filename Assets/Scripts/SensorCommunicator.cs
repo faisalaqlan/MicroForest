@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
+using JetBrains.Annotations;
+using System;
 
 public class SensorCommunicator : MonoBehaviour
 {
+    public float airTemperature = 0.0f; // This will store the temperature value.
+    public TemperatureGraph temperatureGraph; // Reference to the TemperatureGraph script.
+
     public Observation CurrentObservation;
+   
     private int CurrentStationIndex = 0;
     private Station CurrentStation { get; set; }
     public bool IsToggled;
@@ -32,6 +37,7 @@ public class SensorCommunicator : MonoBehaviour
     [SerializeField]
     List<Station> Stations = new List<Station>();
 
+  
     void Awake()
     {
         Actions = new XRIDefaultInputActions();
@@ -53,10 +59,14 @@ public class SensorCommunicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("This is second");
         // TODO(raymond): Bind input to XRI controller inputs.
         // NOTE(raymond): We should consider moving to the modern input system,
         // as the Input module is legacy functionality.
         textElement.enabled = IsToggled;
+
+      
+      
     }
 
     // NOTE(raymond): We need to wrap the coroutine in order to InvokeRepeating.
@@ -113,6 +123,8 @@ public class SensorCommunicator : MonoBehaviour
                  Debug.Log($"{field.Name}: {field.GetValue(CurrentObservation.air_temperature)}"); 
               } */
             Debug.Log($"Station: {currentData.station_name},Temperature: {CurrentObservation.air_temperature}\n");
+
+            
         }
     }
 
