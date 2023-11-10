@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Linq;
 using JetBrains.Annotations;
 using System;
 
@@ -54,7 +55,15 @@ public class SensorCommunicator : MonoBehaviour
     {
         CurrentStation = Stations[0];
         InvokeRepeating("RequestNewObservation", 0.0f, 60.0f);
+
+        //++++++
+       // temperatureGraph = GetComponent<TemperatureGraph>();
+        //++++++
+
     }
+    //+++++
+    List<float> temperatureDataList = new List<float>();
+    //+++++
 
     // Update is called once per frame
     void Update()
@@ -65,8 +74,17 @@ public class SensorCommunicator : MonoBehaviour
         // as the Input module is legacy functionality.
         textElement.enabled = IsToggled;
 
-      
-      
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // Add the air temperature to the list
+        temperatureDataList.Add(CurrentObservation.air_temperature);
+
+        // Draw the temperature graph
+        temperatureGraph.DrawTemperatureGraph(temperatureDataList);
+        //++++++++++++
+
+
+
+
     }
 
     // NOTE(raymond): We need to wrap the coroutine in order to InvokeRepeating.
